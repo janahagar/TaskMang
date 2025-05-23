@@ -1,70 +1,148 @@
-# Getting Started with Create React App
+![image](https://github.com/user-attachments/assets/578fa111-4d2e-4514-a78b-73e3d0b1c31c)Cloud Computing Project Deliverables
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Documentation
+1.1 Architecture Diagram
+The architecture diagram visually illustrates the interactions between the AWS services used in the Task Management System.
+![image](https://github.com/user-attachments/assets/79753566-508e-40d6-b54c-a95bfde11ab6)
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+Description:
+Amazon Cognito: Handles user sign-up, sign-in, and authentication.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+API Gateway: Exposes RESTful endpoints for task CRUD operations.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+AWS Lambda: Implements backend logic triggered by API calls and processes asynchronous notifications.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Amazon RDS: Stores relational data like user profiles and task relationships.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Amazon DynamoDB: Stores non-relational task metadata for quick retrieval.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Amazon S3: Stores user-uploaded files and task attachments.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Amazon SQS: Queues notification messages to be processed asynchronously.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+Amazon EC2: Hosts the web frontend application.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Amazon CloudWatch: Monitors logs, metrics, and triggers alarms for system health.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Setup Guide: Step-by-Step Deployment Instructions
 
-### Making a Progressive Web App
+2.1 Prerequisites
+Active AWS account with appropriate permissions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+AWS CLI installed
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+Source code of frontend and backend applications.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+2.2 AWS Service Setup
+Amazon Cognito: Create User Pool and App Client for user authentication.
+
+
+Amazon RDS: Launch MySQL instance for relational data storage.
+
+
+DynamoDB: Create table for task metadata.
+
+
+Amazon S3: Create bucket for file attachments with proper access policies.
+
+
+Amazon SQS: Create queue for handling notifications asynchronously.
+
+
+AWS Lambda: Deploy functions for task operations, file uploads, and notification processing.
+
+
+API Gateway: Define REST API endpoints and integrate with Lambda functions.
+
+
+EC2 Instance: Launch instance, install necessary runtime, and deploy frontend application.
+
+
+CloudWatch: Configure logs, monitoring dashboards, and alarms.
+
+
+
+2.3 Integration & Configuration
+Configure frontend with Cognito User Pool and API Gateway endpoints.
+
+
+Connect Lambda functions with RDS, DynamoDB, S3, and SQS using IAM roles.
+
+
+Test API endpoints using Postman.
+
+
+Secure EC2 instance with proper security groups and environment variables.
+
+
+
+2.4 Testing
+Verify user authentication flows (sign-up, sign-in).
+
+
+Test task creation, update, deletion functionalities.
+
+
+Upload and retrieve files from S3.
+
+
+Confirm email or notification delivery through SQS and Lambda.
+
+
+Monitor logs and metrics via CloudWatch.
+
+
+
+
+
+
+
+3. User Manual: How to Use the Task Management System
+
+3.1 User Authentication
+Sign Up: Create an account by providing email, username, and password.
+
+
+Log In: Enter credentials (username, password), if correct then you will be navigated to the dashboard.
+3.2 Task Operations
+Create Task: Click “create task” button to fill in details: Task name, description, optional field to attach file and due date.
+
+
+View Tasks: Browse the list of tasks on your dashboard.
+
+
+Update Task: Select a task, click “ expand task,” modify details or attachments, then save using the “ save,” button.
+Delete Task: Select task and click on the edit symbol  “ expand task,” the delete.
+
+
+3.3 Notifications
+Receive email notifications when deadline is approaching 
+
+
+Check registered email inbox regularly.
+
+
+3.4 Logout
+Click “Sign out” button at the top right to securely exit the system.
+
+
+
+
